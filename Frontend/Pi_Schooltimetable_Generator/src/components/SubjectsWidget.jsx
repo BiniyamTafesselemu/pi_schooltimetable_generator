@@ -14,12 +14,12 @@ export default function SubjectsWidget({Subjects, Label}) {
         }
     */
     return (
-        <div className='flex items-center justify-center z-0'>
-            <div className='h-56 sm:h-4 xl:h-80 2xl:h-86 w-[48rem] z-0'>
-                <Carousel slide={false} className='z-0'>
+        <div className='flex items-center justify-center '>
+            <div className='h-80 w-[48rem]'>
+                <Carousel slide={false} >
                     {
                         Subjects.map((Subject, index) => (
-                            <div className="flex h-full items-center justify-center z-0">
+                            <div className="flex h-full items-center justify-center">
                                 <SubjectCard Subject={Subject} id = {`Subject-${index}`} Label={Label}/>
                             </div>        
                         ))

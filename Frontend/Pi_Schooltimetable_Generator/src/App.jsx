@@ -12,16 +12,18 @@ import Teachers from './pages/Teachers.jsx';
 function App() {
   return (
     <>
-      <div>
-        <nav>
+      <div className='flex md:flex-row h-screen flex-col'>
+        <div className='m-0 px-0 py-0 md:h-full h-auto'>
           <Side/>
-        </nav>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Sections" element={<Class />} />
-          <Route path="/Subjects" element={<Subjects />} />
-          <Route path="/Teachers" element={<Teachers />} />
-        </Routes>
+        </div>
+        <div className='md:flex-1 overflow-y-auto'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Sections" element={<Class />} />
+            <Route path="/Subjects" element={<Subjects />} />
+            <Route path="/Teachers" element={<Teachers />} />
+          </Routes>
+        </div>
       </div>
     </>
   )

@@ -1,34 +1,27 @@
 import { Sidebar } from "flowbite-react";
-import { HiArrowSmRight, HiChartPie, HiInbox, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";
 
 export default function Side(){
     return(
-        <Sidebar>
-            <Sidebar.Items >
-                <Sidebar.ItemGroup  className="bg-[#f1f1f1] border-r-[0.1rem] border-solid border-[rgb(167,115,222)] flex flex-col h-screen absolute left-0 top-0 ali items-center justify-center p-5">
-                    <Sidebar.Item href="/Sections">
-                        Sections
-                    </Sidebar.Item>
-                    <Sidebar.Item href="/Subjects">
+        <div className='bg-[#f1f1f1] md:border-r-[0.1rem] border-b-[0.1rem]  border-solid border-[rgb(167,115,222)] flex md:flex-col flex-row md:h-screen h-fit  items-center justify-center p-4 gap-3 md:text-xl text-sm'>
+            <a href="/Sections" className="hover:text-[#5E469C]">Sections</a>
+            <a href="/Subjects" className="hover:text-[#5E469C]">
                         Subjects
-                    </Sidebar.Item>
-                    <Sidebar.Item href="/Teachers">
+                    </a>
+                    <a href="/Teachers" className="hover:text-[#5E469C]">
                         Teachers
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" >
+                    </a>
+                    <a href="#" className="hover:text-[#5E469C]">
                         Invite
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" >
+                    </a>
+                    <a href="#" className="hover:text-[#5E469C]">
                         Schedules
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" >
+                    </a>
+                    <a href="#" className="hover:text-[#5E469C]">
                         Generate
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" >
+                    </a>
+                    <a href="#" className="hover:text-[#5E469C]">
                         Sign out
-                    </Sidebar.Item>
-                </Sidebar.ItemGroup>
-            </Sidebar.Items>
-        </Sidebar>
+                    </a>
+        </div>
     );
 }

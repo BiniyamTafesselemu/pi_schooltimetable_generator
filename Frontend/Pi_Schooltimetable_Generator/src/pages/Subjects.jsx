@@ -6,6 +6,8 @@ import SubjectsWidget from "../components/SubjectsWidget";
 import AddSubject from "../components/AddSubject";
 import { useState } from 'react';
 
+import SubjectCard from "../components/SubjectCard";
+
 export default function Subjects(){
   //Data used 
   let Subjects = [
@@ -14,6 +16,7 @@ export default function Subjects(){
       information:[
         {
           SectionCategory: "12", 
+          load: "14:00",
           SectionNumber: "4", 
           TeacherNumber: "2", 
           teachers: [
@@ -30,7 +33,8 @@ export default function Subjects(){
           ]
         },
         {
-          SectionCategory: "11", 
+          SectionCategory: "11",
+          load: "14:00", 
           SectionNumber: "5", 
           TeacherNumber: "3", 
           teachers: [
@@ -58,7 +62,8 @@ export default function Subjects(){
       Name: "Mathemathics",
       information:[
         {
-          SectionCategory: "12", 
+          SectionCategory: "12",
+          load: "22:00", 
           SectionNumber: "5", 
           TeacherNumber: "2", 
           teachers: [
@@ -75,7 +80,8 @@ export default function Subjects(){
           ]
         },
         {
-          SectionCategory: "10", 
+          SectionCategory: "10",
+          load: "18:00", 
           SectionNumber: "5", 
           TeacherNumber: "3", 
           teachers: [
@@ -103,7 +109,8 @@ export default function Subjects(){
       Name: "Physics",
       information:[
         {
-          SectionCategory: "8", 
+          SectionCategory: "8",
+          load: "14:00", 
           SectionNumber: "5", 
           TeacherNumber: "2", 
           teachers: [
@@ -121,6 +128,7 @@ export default function Subjects(){
         },
         {
           SectionCategory: "9", 
+          load: "16:00",
           SectionNumber: "2", 
           TeacherNumber: "2", 
           teachers: [
@@ -138,6 +146,7 @@ export default function Subjects(){
         },
         {
           SectionCategory: "10", 
+          load: "16:00",
           SectionNumber: "5", 
           TeacherNumber: "3", 
           teachers: [
@@ -160,6 +169,7 @@ export default function Subjects(){
         },
         {
           SectionCategory: "11", 
+          load: "18:00",
           SectionNumber: "5", 
           TeacherNumber: "2", 
           teachers: [
@@ -177,6 +187,7 @@ export default function Subjects(){
         },
         {
           SectionCategory: "12", 
+          load: "22:00",
           SectionNumber: "5", 
           TeacherNumber: "2", 
           teachers: [
@@ -209,7 +220,7 @@ export default function Subjects(){
   const [isOpen, setIsOpen] = useState(false);
   return(
       <div>
-        <div className='text-center bg-[#DCD4F1] h-screen m-[-2rem_0rem_0rem_9.5rem] overflow-y-auto z-0'>  
+        <div className='text-center bg-[#DCD4F1] z-0'>  
           <div className= 'z-20 text-center'>
               <header className="bg-[#f1f1f1] border-b-[0.1rem] border-solid border-[rgb(167,115,222)] p-4">
                 <h1 className="text-5xl font-bold text-[#5E469C]">Subjects</h1>
@@ -226,13 +237,15 @@ export default function Subjects(){
                 <Button Name={"Filter"} className='z-20'/>
               </form>
           </div>      
+          <div className= 'flex flex-col '>
             {
               Subjects.map((subject, index)=>(
-                <div>
+                
                   <SubjectsWidget Subjects={subject.information} Label={subject.Name} key={index}/>
-                </div>
+                
               ))
             }
+            </div>
 
             <button style={ADD_STYLES} className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md' onClick={()=> setIsOpen(true)}>ADD</button>
             <AddSubject open={isOpen} onClose={()=> setIsOpen(false)}/>
