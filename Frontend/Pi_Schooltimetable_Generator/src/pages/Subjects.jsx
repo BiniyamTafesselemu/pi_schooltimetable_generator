@@ -6,7 +6,7 @@ import SubjectsWidget from "../components/SubjectsWidget";
 import AddSubject from "../components/AddSubject";
 import { useState } from 'react';
 
-import SubjectCard from "../components/SubjectCard";
+import HeadBan from "../components/HeadBan";
 
 export default function Subjects(){
   //Data used 
@@ -220,12 +220,9 @@ export default function Subjects(){
   const [isOpen, setIsOpen] = useState(false);
   return(
       <div>
-        <div className='text-center bg-[#DCD4F1] z-0'>  
+        <div className='text-center z-0'>  
           <div className= 'z-20 text-center'>
-              <header className="bg-[#f1f1f1] border-b-[0.1rem] border-solid border-[rgb(167,115,222)] p-4">
-                <h1 className="text-5xl font-bold text-[#5E469C]">Subjects</h1>
-              </header>
-              
+              <HeadBan title={"Subjects"}/>
               <form className='flex flex-row justify-center items-center gap-1 m-[1.5rem_0rem]'>
                 <TextInput id="SubjectName" type="text" rightIcon={HiSearch} placeholder="Subject"  className='w-3/12 z-20' required />
                 <Select id="Section category" className='w-2/12 z-20' required>
@@ -235,14 +232,14 @@ export default function Subjects(){
                   <option>category 5</option>
                 </Select>
                 <Button Name={"Filter"} className='z-20'/>
-              </form>
+                </form>
           </div>      
           <div className= 'flex flex-col '>
             {
               Subjects.map((subject, index)=>(
                 
                   <SubjectsWidget Subjects={subject.information} Label={subject.Name} key={index}/>
-                
+  
               ))
             }
             </div>

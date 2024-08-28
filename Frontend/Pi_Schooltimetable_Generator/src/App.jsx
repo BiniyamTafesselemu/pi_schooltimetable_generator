@@ -12,8 +12,8 @@ import Teachers from './pages/Teachers.jsx';
 function App() {
   return (
     <>
-      <div className='flex md:flex-row h-screen flex-col'>
-        <div className='m-0 px-0 py-0 md:h-full h-auto'>
+      <div className='flex md:flex-row flex-col h-screen bg-[#DCD4F1]'>
+        <div className='m-0 px-0 py-0 md:h-full h-[0rem] w-[0rem] overflow-x-hidden md:w-fit'>
           <Side/>
         </div>
         <div className='md:flex-1 overflow-y-auto'>
