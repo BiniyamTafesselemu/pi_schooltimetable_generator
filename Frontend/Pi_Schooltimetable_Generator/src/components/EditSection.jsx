@@ -64,7 +64,7 @@ export default function EditSection({open, onClose, Sections}) {
                         </button>
                     </div>
                     <div className='flex flex-row gap-1 m-1 items-center justify-end'>
-                        <Button Name={"Save"} fun={()=>{console.log("Save!")}}/>
+                    <button  onClick={()=>{console.log("Save!")}} type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
                     </div>
                 </form>
             </div>

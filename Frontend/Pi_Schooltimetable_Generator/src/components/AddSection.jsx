@@ -1,6 +1,5 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDom from 'react-dom'
-import Button from './Button'
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -25,6 +24,30 @@ const OVERLAY_STYLES = {
 import {TextInput, Select } from "flowbite-react";
 
 export default function AddSection({open, onClose}) {
+    const [values, setValues] = useState(
+        {
+            SchoolCycle:"",
+            SectionCategory:"",
+            Sections:[]
+        }
+    )
+
+    const [error, setError] = useState(
+        {
+            SchoolCycle:"",
+            SectionCategory:"",
+            Sections:""
+        }
+    )
+
+    const handleInput = (event) =>{
+        setValues(prev=>({...prev,[event.target.name]:[event.target.value]}))
+    }
+
+    const handleSubmit = (event) =>{
+        event.preventDefault();
+        setError(Validartion(values))
+    }
     if(!open) return null;
     return ReactDom.createPortal(
         <>
@@ -39,14 +62,43 @@ export default function AddSection({open, onClose}) {
                     </button>
                 </div>
                 <form action='' onSubmit={''}>
-                    <div className='flex flex-row gap-1 border-b-[0.1rem] p-2 pb-3'>
-                        <Select id="Cycles" placeholder="Section Category" required>
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>France</option>
-                            <option>Germany</option>
-                        </Select>
-                        <TextInput id="SectionCategory" type="number" addon="SectionCategory" />
+                    <div className='flex flex-col gap-1 border-b-[0.1rem] p-2 pb-3'>
+                        
+                        {
+                            error.SchoolCycle == ""? 
+                            <Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle'>
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>France</option>
+                                <option>Germany</option>
+                            </Select>
+                            :
+                            <Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle' color = "failure"
+                                helperText={
+                                    <>
+                                        <span className="font-medium">Oops!</span> {error.SchoolCycle}
+                                    </>
+                                }
+                            >
+                                <option>United States</option>
+                                <option>Canada</option>
+                                <option>France</option>
+                                <option>Germany</option>
+                            </Select>
+                            
+                        }
+                        {
+                            error.SectionCategory == ""?
+                            <TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" required onChange={handleInput} name='SectionCategory'/>:
+                            <TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" required onChange={handleInput} name='SectionCategory' color='failure'
+                                helperText={
+                                    <>
+                                        <span className="font-medium">Oops!</span> {error.SectionCategory}
+                                    </>
+                                }
+                            />
+                        }
+                        
                     </div>
                     <div className='flex flex-row gap-1 justify-between items-center p-2'>
                         <button title='add a section'>
@@ -56,11 +108,29 @@ export default function AddSection({open, onClose}) {
                         </button>
                     </div>
                     <div className='flex flex-row gap-1 m-1 items-center justify-end'>
-                        <Button Name={"Save"} fun={()=>{console.log("Save!")}}/>
+                        <button  onClick={()=>{console.log("Save!")}} type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
                     </div>
                 </form>
             </div>
         </>,
         document.getElementById('portal')
   )
+}
+
+function Validartion(values){
+    let error = {}
+
+    if(values.SectionCategory = ""){
+        error.SectionCategory = "Choose a section Category"
+    }
+
+    if(values.SchoolCycle = ""){
+        error.SectionCategory = "Choose a school cycle"
+    }
+
+    if(values.Sections.empty()){
+        error.Sections = "Add a section"
+    }
+
+    return error;
 }
