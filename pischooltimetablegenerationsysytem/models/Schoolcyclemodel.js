@@ -1,4 +1,4 @@
-const db = require("../db"); // Assuming you have a db module for database connection  
+const db = require("../db"); 
 
 // Function to get all school cycles  
 const getAllSchoolCycles = (callback) => {  

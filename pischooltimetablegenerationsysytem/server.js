@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // To support URL-encoded bodies  
 
 app.use("/school", Schoolrout);  
-app.use("/schoolcycle", schoolCycleRoutes); // Ensure the variable name matches  
+app.use("/schoolcycle", schoolCycleRoutes); 
 
 app.listen(8081, () => {  
     console.log("Server is running on http://localhost:8081");  
