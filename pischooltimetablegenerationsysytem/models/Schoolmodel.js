@@ -22,6 +22,20 @@ const getSchool = (callback) => {
     });  
 };  
 
+// FUNCTION TO GET A SCHOOL BY ID
+const getSchoolById = (id, callback) => {
+    const query = "SELECT * FROM school WHERE id = ?";
+    db.query(query, [id], (err, results) => {
+        if (err) {
+            return callback(err);
+        }
+        if (results.length === 0) {
+            return callback(new Error(`School with ID ${id} does not exist.`));
+        }
+        callback(null, results[0]);
+    });
+};
+
 // FUNCTION TO CHECK IF SCHOOL EXISTS  
 const schoolExists = (id, callback) => {
     const query = "SELECT COUNT(*) AS count FROM school WHERE id = ?";
@@ -81,6 +95,7 @@ const deleteSchool = (id, callback) => {
 module.exports = {  
     createSchool,  
     getSchool,  
+    getSchoolById, // Add this line
     updateSchool,  
     deleteSchool,  
 };  
