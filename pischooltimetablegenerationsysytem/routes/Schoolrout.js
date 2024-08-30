@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");  
 const path = require("path");  
 const router = express.Router();  
-const { createSchool, getSchool, updateSchool, deleteSchool } = require("../models/Schoolmodel");  
+const { createSchool, getSchool, getSchoolById, updateSchool, deleteSchool } = require("../models/Schoolmodel");  
 
 // Set up multer for file uploads  
 const storage = multer.diskStorage({  
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });  
 
 // Create a new school  
-router.post("/post", (req, res) => {  
+router.post("/createschool", (req, res) => {  
     createSchool(req.body, (err, results) => {  
         if (err) {  
             return res.status(500).json({ error: 'Error creating school' });  
@@ -27,7 +27,7 @@ router.post("/post", (req, res) => {
 });  
 
 // Get all schools  
-router.get("/get", (req, res) => {  
+router.get("/getallschools", (req, res) => {  
     getSchool((err, results) => {  
         if (err) {  
             return res.status(500).json({ error: 'Error fetching schools' });  
@@ -36,8 +36,23 @@ router.get("/get", (req, res) => {
     });  
 });  
 
+// Get a specific school by ID
+router.get("/school/:id", (req, res) => {
+    const { id } = req.params; // Get the ID from the URL
+
+    getSchoolById(id, (err, school) => {
+        if (err) {
+            if (err.message.includes("does not exist")) {
+                return res.status(404).json({ error: err.message }); // Not found
+            }
+            return res.status(500).json({ error: 'Error fetching school' }); // Internal server error
+        }
+        res.json(school); // Return the school data
+    });
+});
+
 // Update a school with logo upload  
-router.put("/:id", upload.single('logo'), (req, res) => {  
+router.put("/updateschool/:id", upload.single('logo'), (req, res) => {  
     const { id } = req.params;  
     const schoolData = {  
         name: req.body.name,  
@@ -56,7 +71,7 @@ router.put("/:id", upload.single('logo'), (req, res) => {
 });  
 
 // Delete a school  
-router.delete("/:id", (req, res) => {  
+router.delete("/deleteschool/:id", (req, res) => {  
     const { id } = req.params;  
     deleteSchool(id, (err, results) => {  
         if (err) {  
@@ -66,4 +81,4 @@ router.delete("/:id", (req, res) => {
     });  
 });  
 
-module.exports = router; 
+module.exports = router;  
