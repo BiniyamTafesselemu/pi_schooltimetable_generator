@@ -39,5 +39,5 @@ const getSectionCategoryById = (id, callback) => {
 module.exports = {
     getSectionCategoriesByCycleId,
     getSectionCategoryById,
-    validateSchoolCycle, // Ensure this is included
+    validateSchoolCycle, 
 };
