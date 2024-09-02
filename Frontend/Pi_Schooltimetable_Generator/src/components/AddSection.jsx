@@ -42,15 +42,16 @@ export default function AddSection({open, onClose}) {
     )
 
     const handleInput = (event) =>{
-        setValues(prev=>({...prev,[event.target.name]:event.target.value}))
+        setValues(prev=>({...prev,[event.target.name]:event.target.value}));
         console.log(values.SchoolCycle+" "+values.SectionCategory+" "+values.Sections+" ");
     }
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        setError(Validartion(values));
-        if(error.SchoolCycle == "" && error.SectionCategory == "" && error.Sections == "") console.log(values);
-        else console.log(error);
+        const validationErrors = Validation(values)
+        setError(validationErrors);
+        if(validationErrors.SchoolCycle == "" && validationErrors.SectionCategory == "" && validationErrors.Sections == "") console.log("successfully submitted:" + values.SectionCategory);
+        else console.log("found error:" + validationErrors.SchoolCycle+" "+ validationErrors.SectionCategory+" "+ validationErrors.Sections+" ");
     }
 
     const close = () =>{
@@ -69,8 +70,11 @@ export default function AddSection({open, onClose}) {
         onClose();
     }
 
-    const addSection = () => {
-        const newSec = String.fromCharCode(values.Sections.length + 65);
+    const addSection = (event) => {
+        event.preventDefault();
+        let newSec;
+        if(values.Sections.length == 0) newSec = 'A';
+        else newSec = String.fromCharCode(values.Sections[values.Sections.length-1].charCodeAt(0)+1);
 
         setValues(prev => {            
             const updatedSections = [...prev.Sections, newSec];
@@ -149,17 +153,30 @@ export default function AddSection({open, onClose}) {
                     <div className='flex flex-row gap-1 justify-between items-center p-2'>
                     {
                             values.Sections.map((x,index)=>(
-                                <button key={index} className='hover:bg-[#5e469c] hover:text-white w-8 h-8 rounded-[100%] flex justify-center items-center p-4 hover:border-white border-[0.05rem]' title={'remove '+x.SectionName+'?'} onClick={()=>deleteSection(index)}>
+                                <button key={index} className='hover:bg-[#5e469c] hover:text-white w-8 h-8 rounded-[100%] flex justify-center items-center p-4 hover:border-white border-[0.05rem]' title={'remove '+x.SectionName+'?'} onClick={()=>deleteSection(index)} type="button">
                                     {x}
                                 </button>
                             ))
                         }
-                        <button title='add a section' onClick={addSection}>
+                        {
+                            (error.Sections == '')?
+                            (<button title='add a section' onClick={addSection} type="button">
                             <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
                             </svg>
-                        </button>
+                        </button>):
+                        (<button title='add a section' onClick={addSection} type="button" className='rounded-[100%] border-red-700 border-[0.05rem]'>
+                            <svg class="w-6 h-6 text-red-700 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5"/>
+                            </svg>
+                        </button>)
+                        }
                     </div>
+                    {
+                        (error.Sections)&&(<div className='text-red-700'>
+                            {error.Sections}
+                        </div>)
+                    }
                     <div className='flex flex-row gap-1 m-1 items-center justify-end'>
                         <button type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
                     </div>
@@ -170,7 +187,7 @@ export default function AddSection({open, onClose}) {
   )
 }
 
-function Validartion(values){
+function Validation(values){
     let error = {}
 
     if(values.SectionCategory == ""){
@@ -189,7 +206,7 @@ function Validartion(values){
         error.SchoolCycle = ""
     }
 
-    if(!values.Sections){
+    if(values.Sections.length == 0){
         error.Sections = "Add a section"
         console.log(error.Sections)
     }
