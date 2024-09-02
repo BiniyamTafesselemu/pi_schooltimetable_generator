@@ -10,6 +10,7 @@ import Subjects from './pages/Subjects.jsx';
 import Teachers from './pages/Teachers.jsx';
 import TeacherProfile from './pages/TeacherProfile.jsx';
 import TeacherEdit from './components/TeacherEdit.jsx';
+import AddTeacher from './pages/AddTeacher.jsx';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/Sections" element={<Class />} />
             <Route path="/Subjects" element={<Subjects />} />
             <Route path="/Teachers" element={<Teachers />} />
+            <Route path="/AddTeachers" element={<AddTeacher/>} />
             <Route path="/TeacherProfile/:teacherID" element={<TeacherProfile/>}/>
             <Route path="TeacherEdit" element={<TeacherEdit/>}/>
 
