@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDom from 'react-dom'
 import Button from './Button'
 
@@ -25,6 +25,50 @@ const OVERLAY_STYLES = {
 import {TextInput, Select } from "flowbite-react";
 
 export default function AddSubject({open, onClose}) {
+    const SectionCategories = [{id:'1', Name: 'SectionCategory 1'}, {id:'2', Name: 'SectionCategory 2'}, {id:'3', Name: 'SectionCategory 3'}, {id:'4', Name: 'SectionCategory 4'}]
+    const [values, setValues] = useState(
+        {
+            subjectName:'',
+            SectionCategory:'',
+            Load:''
+        }
+    )
+
+    const [error, setError] = useState(
+        {
+            subjectName:'',
+            SectionCategory:'',
+            Load:''
+        }
+    )
+
+    const handleInput = (event) =>{
+        setValues(prev=>({...prev,[event.target.name]:event.target.value}));
+        console.log(values.SchoolCycle+" "+values.SectionCategory+" "+values.Sections+" ");
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const validationErrors = Validation(values);
+        setError(validationErrors);
+        if(validationErrors.subjectName == "" && validationErrors.Load == "" && validationErrors.SectionCategory == "") console.log("successfully submitted:" + values.subjectName);
+        else console.log("found error:" + validationErrors.SectionCategory+" "+ validationErrors.subjectName+" "+ validationErrors.Load+" ");
+    }
+
+    const close = () => {
+        setError({
+            SectionCategory: '',
+            subjectName: '',
+            Load: ''
+        });
+        setValues({
+            SectionCategory: '',
+            subjectName: '',
+            Load: ''
+        });
+        onClose();
+    }
+
     if(!open) return null;
     return ReactDom.createPortal(
         <>
@@ -35,23 +79,90 @@ export default function AddSubject({open, onClose}) {
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
                     </svg>
                 </button>
-                <form>
+                <form action='' onSubmit={handleSubmit}>
                     <div className='flex flex-row gap-1'>
-                        <TextInput id="base" type="text" sizing="md" placeholder="Subject Name" />
-                        <TextInput id="base" type="text" sizing="md" placeholder="Subject Load" />
+                        {
+                            (error.subjectName === "")?
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput}/></div>):
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput} color= 'failure'
+                                helperText={
+                                    <>
+                                        <span className="font-medium">Oops!</span> {error.subjectName}
+                                    </>
+                                }
+                            /></div>)
+                        }
+                        {
+                            (error.Load === "")?
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput}/></div>):
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput} color= "failure"
+                                helperText={
+                                    <>
+                                        <span className="font-medium">Oops!</span> {error.Load}
+                                    </>
+                                }
+                            /></div>)
+                        }
                     </div>
-                    <Select id="countries" placeholder="Section Category" required>
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>France</option>
-                        <option>Germany</option>
-                    </Select>
+                    {
+                        (error.SectionCategory === "")?
+                        (<Select id="countries" placeholder="Section Category" name='SectionCategory' onChange={handleInput}>
+                            {
+                                SectionCategories.map((x, index)=>(
+                                    <option key={index}>{x.Name}</option>
+                                ))
+                            }
+                        </Select>):
+                        (<Select id="countries" placeholder="Section Category" name='SectionCategory' onChange={handleInput} color= "failure"
+                            helperText={
+                                    <>
+                                        <span className="font-medium">Oops!</span> {error.Load}
+                                    </>
+                                }
+                        >
+                            {
+                                SectionCategories.map((x, index)=>(
+                                    <option key={index}>{x.Name}</option>
+                                ))
+                            }   
+                    </Select>)
+                    }
                     <div className='flex flex-row gap-1 m-1 items-center justify-end'>
-                        <Button Name={"Save"} fun={()=>{console.log("Save!")}}/>
+                    <button type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
                     </div>
                 </form>
             </div>
         </>,
         document.getElementById('portal')
   )
+}
+
+function Validation(values){
+    let error = {}
+
+    if(values.SectionCategory == ""){
+        error.SectionCategory = "Choose a section Category"
+        console.log(error.SectionCategory)
+    }
+    else{
+        error.SectionCategory = "" 
+    }
+
+    if(values.subjectName == ""){
+        error.subjectName = "Choose a subjectName"
+        console.log(error.subjectName)
+    }
+    else{
+        error.subjectName = ""
+    }
+
+    if(values.Load == ""){
+        error.Load = "Add a Load"
+        console.log(error.Load)
+    }
+    else{
+        error.Load = ""
+    }
+
+    return error;
 }

@@ -430,7 +430,7 @@ export default function Class(){
               <HeadBan title={"Sections"}/>
           </div>
           
-          <div className="flex flex-row gap-1 justify-between items-center p-2 md:pl-[10rem] md:pr-[10rem]">
+          <div className="flex flex-row gap-1 justify-between items-center p-2 mt-5 md:pl-[10rem] md:pr-[10rem]">
             {
               Sections.map((Section, index) => (
                 <SecitonLocator ID={"SectionCard"+index} SectionCategoryName={Section.SectionCategory} key={index}/>
