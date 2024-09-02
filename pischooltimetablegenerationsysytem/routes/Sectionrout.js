@@ -4,7 +4,7 @@ const { createSection, getSectionsByCategoryId, deleteSection } = require("../mo
 
 // Create a new section under a specific category using section_category_id
 router.post("/:categoryId", (req, res) => {
-    const { SectionName } = req.body; // Get SectionName from the body
+    const { SectionName } = req.body; 
     const section_category_id = req.params.categoryId; 
 
     createSection({ SectionName, section_category_id }, (err, results) => {
