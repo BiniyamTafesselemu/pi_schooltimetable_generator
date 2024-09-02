@@ -8,6 +8,7 @@ const MODAL_STYLES = {
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#fff',
     padding: '1rem',
+    width: 'fit',
     zIndex: 1000
 }
 
@@ -110,19 +111,18 @@ export default function AddSection({open, onClose}) {
                     </button>
                 </div>
                 <form action='' onSubmit={handleSubmit}>
-                    <div className='flex flex-col gap-1 border-b-[0.1rem] p-2 pb-3'>
-                        
+                    <div className='flex flex-row gap-1 border-b-[0.1rem] p-2 pb-3'>  
                         {
                             error.SchoolCycle === ""? 
-                            (<Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle'>
+                            (<div className='flex flex-col w-fit'><Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle' className='w-[10rem]'>
                                 {
                                     cycles.map((cycle, index) => (
                                         <option key={index}>{cycle.Name}</option>
                                     ))
                                 }
-                            </Select>)
+                            </Select></div>)
                             :
-                            (<Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle' color = "failure"
+                            (<div className='flex flex-col w-fit'><Select id="Cycles" placeholder="Section Category" required onChange={handleInput} name='SchoolCycle' color = "failure" className='w-[10rem]'
                                 helperText={
                                     <>
                                         <span className="font-medium">Oops!</span> {error.SchoolCycle}
@@ -134,19 +134,19 @@ export default function AddSection({open, onClose}) {
                                         <option key={index}>{cycle.Name}</option>
                                     ))
                                 }
-                            </Select>)
+                            </Select></div>)
                             
                         }
                         {
                             error.SectionCategory === ""?
-                            (<TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" onChange={handleInput} name='SectionCategory'/>):
-                            (<TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" onChange={handleInput} name='SectionCategory' color='failure'
+                            (<div className='flex flex-col w-[12rem]'><TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" onChange={handleInput} name='SectionCategory' /></div>):
+                            (<div className='flex flex-col w-[12rem]'><TextInput id="SectionCategory" type="number" min={1} addon="SectionCategory" onChange={handleInput} name='SectionCategory' color='failure'
                                 helperText={
                                     <>
                                         <span className="font-medium">Oops!</span> {error.SectionCategory}
                                     </>
                                 }
-                            />)
+                            /></div>)
                         }
                         
                     </div>

@@ -1,11 +1,9 @@
-import { TextInput, Select } from "flowbite-react";
-import { HiSearch } from "react-icons/hi";
 import Button from "../components/Button";
 
 import SubjectsWidget from "../components/SubjectsWidget";
 import AddSubject from "../components/AddSubject";
-import { useState } from 'react';
 import SearchSubject from "../components/SearchSubject";
+import { useState } from 'react';
 
 import HeadBan from "../components/HeadBan";
 
