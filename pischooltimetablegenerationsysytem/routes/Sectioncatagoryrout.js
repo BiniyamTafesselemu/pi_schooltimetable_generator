@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { 
     getSectionCategoriesByCycleId, 
-    getSectionCategoryById, // Import the new function
+    getSectionCategoryById, 
     validateSchoolCycle 
 } = require("../models/Sectioncatagorymodel");
 

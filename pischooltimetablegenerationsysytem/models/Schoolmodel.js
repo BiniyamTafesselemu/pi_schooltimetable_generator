@@ -95,7 +95,7 @@ const deleteSchool = (id, callback) => {
 module.exports = {  
     createSchool,  
     getSchool,  
-    getSchoolById, // Add this line
+    getSchoolById,
     updateSchool,  
     deleteSchool,  
 };  

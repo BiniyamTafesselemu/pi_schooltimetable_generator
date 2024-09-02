@@ -14,7 +14,7 @@ const getAllSchoolCycles = (callback) => {
 const getSchoolCycleById = (id, callback) => {  
     db.query("SELECT * FROM schoolcycle WHERE school_cycle_id = ?", [id], (err, results) => {  
         if (err) {  
-            console.error("Database error:", err); // Log the error for debugging  
+            console.error("Database error:", err);  
             return callback(err);  
         }  
         callback(null, results[0]);  
