@@ -80,28 +80,28 @@ export default function AddSubject({open, onClose}) {
                     </svg>
                 </button>
                 <form action='' onSubmit={handleSubmit}>
-                    <div className='flex flex-col gap-1'>
+                    <div className='flex flex-row gap-1'>
                         {
                             (error.subjectName === "")?
-                            (<TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput}/>):
-                            (<TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput} color= 'failure'
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput}/></div>):
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Name" name='subjectName' onChange={handleInput} color= 'failure'
                                 helperText={
                                     <>
                                         <span className="font-medium">Oops!</span> {error.subjectName}
                                     </>
                                 }
-                            />)
+                            /></div>)
                         }
                         {
                             (error.Load === "")?
-                            (<TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput}/>):
-                            (<TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput} color= "failure"
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput}/></div>):
+                            (<div className=' flex flex-col'><TextInput id="base" type="text" sizing="md" placeholder="Subject Load" name='Load' onChange={handleInput} color= "failure"
                                 helperText={
                                     <>
                                         <span className="font-medium">Oops!</span> {error.Load}
                                     </>
                                 }
-                            />)
+                            /></div>)
                         }
                     </div>
                     {
