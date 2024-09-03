@@ -22,12 +22,12 @@ export default function HeadBan({title}) {
     
 
     return (
-    <header className="bg-[#f1f1f1] border-b-[0.1rem] border-solid border-[rgb(167,115,222)] p-4 flex flex-row items-center">
+    <header className="bg-[#f1f1f1] border-b-[0.1rem] border-solid border-[rgb(167,115,222)] p-4 flex flex-row items-center justify-center">
         {screenSize <= 768    && (
             <div>
                 {
                     <button onClick={()=> setIsOpen(true)}>
-                        <svg class="w-9 h-9 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="w-9 h-9 text-gray-800 hover:text-[rgb(167,115,222)]  dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/>
                         </svg>
                     </button>
@@ -35,8 +35,7 @@ export default function HeadBan({title}) {
                 <SideBarPopUP open={isOpen} onClose={()=> setIsOpen(false)}/>
             </div>
         )}
-        
-        <h1 className="text-5xl font-bold text-[#5E469C] flex-1">{title}</h1>
+        <h1 className="text-5xl font-bold text-[#5E469C] flex-1 justify-center items-center">{title}</h1>
     </header>
   )
 }
@@ -77,7 +76,7 @@ function SideBarPopUP({open, onClose}){
                 </div>
                 <div style={Canncel_STYLES}>
                     <button onClick={onClose}> 
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 text-gray-800 hover:text-[rgb(167,115,222)] dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
                         </svg>
                     </button>
