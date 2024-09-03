@@ -4,7 +4,10 @@ import HeadBan from "../components/HeadBan";
 
 // Subjects array
 const subjects = [
-    "Mathematics",
+    "Mathematics "+ "Catregory1",
+    "Mathematics "+ "Catregory3",
+    "Mathematics "+ "Catregory4",
+    "Mathematics "+ "Catregory5",
     "English",
     "Science",
     "History",

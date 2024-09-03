@@ -1,14 +1,52 @@
-import Button from "../components/Button";
-
 import SubjectsWidget from "../components/SubjectsWidget";
 import AddSubject from "../components/AddSubject";
 import SearchSubject from "../components/SearchSubject";
-import { useState } from 'react';
-
+import SubjectCard from "../components/SubjectCard";
 import HeadBan from "../components/HeadBan";
 
+import { useState } from 'react';
+
 export default function Subjects(){
-  //Data used 
+
+  // Add button styling
+  const ADD_STYLES = {
+    position: 'fixed',
+    top: '95%',
+    right: '2.5%',
+    transform: 'translate(-50%, -50%)',
+    width:'full',
+    zIndex: 100
+  } 
+  //for pop up conditionals 
+  const [isOpen, setIsOpen] = useState(false);
+  const [result, setResult] = useState([]);
+  return(
+      <div>
+        <div className='text-center z-0'>  
+          <div className= 'text-center'>
+              <HeadBan title={"Subjects"}/>
+              <SearchSubject func={setResult}/>
+          </div>      
+          {
+            (result.length == 0)?
+            (<DefaultDisplay/>):
+            (
+              <>
+                <SearchResult result={result} setResult={setResult}/>
+                <button onClick={()=>window.location.reload()}>canncel</button>
+              </>
+            )
+          }
+            <button style={ADD_STYLES} className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md' onClick={()=> setIsOpen(true)}>ADD</button>
+            <AddSubject open={isOpen} onClose={()=> setIsOpen(false)}/>
+          <div>
+          </div>
+        </div>
+      </div>
+    )
+}
+
+function DefaultDisplay(){
   let Subjects = [
     {
       Name: "Socalism",
@@ -22,12 +60,12 @@ export default function Subjects(){
             {
               img: ``, 
               name: "Donald Trump", 
-              ID: 21333
+              ID: "21333"
             }, 
             {
               img: ``, 
               name: "Kamila Harris", 
-              ID: 333
+              ID: "333"
             }
           ]
         },
@@ -40,17 +78,17 @@ export default function Subjects(){
             {
               img: ``, 
               name: "Brack Obama", 
-              ID: 2100
+              ID: "2100"
             }, 
             {
               img: ``, 
               name: "Joe Biden", 
-              ID: 1968
+              ID: "1968"
             }, 
             {
               img: ``, 
               name: "Hasan Piker", 
-              ID: 1
+              ID: "1"
             }
           ]
         }
@@ -68,13 +106,13 @@ export default function Subjects(){
           teachers: [
             {
               img: ``, 
-              name: "ANtony Devis", 
-              ID: 234401
+              name: "Antony Devis", 
+              ID: "234401"
             }, 
             {
               img: ``, 
               name: "Symon White", 
-              ID: 303
+              ID: "303"
             }
           ]
         },
@@ -87,17 +125,17 @@ export default function Subjects(){
             {
               img: ``, 
               name: "Ken", 
-              ID: 2100
+              ID: "2102"
             }, 
             {
               img: ``, 
               name: "Samuel Wanigton", 
-              ID: 1968
+              ID: "10968"
             }, 
             {
               img: ``, 
-              name: "Hakim The tanker", 
-              ID: 1
+              name: "Hakim Tanker", 
+              ID: "5"
             }
           ]
         }
@@ -115,13 +153,13 @@ export default function Subjects(){
           teachers: [
             {
               img: ``, 
-              name: "ANtony Devis", 
-              ID: 234401
+              name: "Antony Devis", 
+              ID: "25501"
             }, 
             {
               img: ``, 
               name: "Symon White", 
-              ID: 303
+              ID: "22303"
             }
           ]
         },
@@ -133,13 +171,13 @@ export default function Subjects(){
           teachers: [
             {
               img: ``, 
-              name: "ANtony Devis", 
-              ID: 234401
+              name: "Antony Devis", 
+              ID: "2344"
             }, 
             {
               img: ``, 
               name: "Symon White", 
-              ID: 303
+              ID: "322303"
             }
           ]
         },
@@ -152,17 +190,17 @@ export default function Subjects(){
             {
               img: ``, 
               name: "Ken", 
-              ID: 2100
+              ID: "2122301"
             }, 
             {
               img: ``, 
               name: "Samuel Wanigton", 
-              ID: 1968
+              ID: "90456"
             }, 
             {
               img: ``, 
-              name: "Hakim The tanker", 
-              ID: 1
+              name: "Hakim Tanker", 
+              ID: "900231"
             }
           ]
         },
@@ -174,13 +212,13 @@ export default function Subjects(){
           teachers: [
             {
               img: ``, 
-              name: "ANtony Devis", 
-              ID: 234401
+              name: "Antony Devis", 
+              ID: "2019965"
             }, 
             {
               img: ``, 
               name: "Symon White", 
-              ID: 303
+              ID: "3031255"
             }
           ]
         },
@@ -192,51 +230,36 @@ export default function Subjects(){
           teachers: [
             {
               img: ``, 
-              name: "ANtony Devis", 
-              ID: 234401
+              name: "Antony Devis", 
+              ID: "77401"
             }, 
             {
               img: ``, 
               name: "Symon White", 
-              ID: 303
+              ID: "830356"
             }
           ]
         },
       ]
     },
   ]
-
-  // Add button styling
-  const ADD_STYLES = {
-    position: 'fixed',
-    top: '95%',
-    right: '2.5%',
-    transform: 'translate(-50%, -50%)',
-    width:'full',
-    zIndex: 100
-  } 
-  //for pop up conditionals 
-  const [isOpen, setIsOpen] = useState(false);
   return(
-      <div>
-        <div className='text-center z-0'>  
-          <div className= 'z-20 text-center'>
-              <HeadBan title={"Subjects"}/>
-              <SearchSubject/>
-          </div>      
-          <div className= 'flex flex-col '>
-            {
-              Subjects.map((subject, index)=>(
-                
-                  <SubjectsWidget Subjects={subject.information} Label={subject.Name} key={index}/>
-  
-              ))
-            }
-            </div>
+    <div className= 'flex flex-col'>
+      {
+        Subjects.map((subject, index)=>(      
+          <SubjectsWidget Subjects={subject.information} Label={subject.Name} key={index}/>
+        ))
+      }
+    </div>
+  )
+}
 
-            <button style={ADD_STYLES} className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md' onClick={()=> setIsOpen(true)}>ADD</button>
-            <AddSubject open={isOpen} onClose={()=> setIsOpen(false)}/>
-        </div>
-      </div>
-    )
+function SearchResult({result}){
+  return(
+    <div className='flex flex-col items-center'>
+        {result.map((x, index)=>(
+          <SubjectCard Label={x.Name} Subject={x.information} key={index}/>
+        ))}
+    </div>
+  )
 }
