@@ -25,7 +25,7 @@ router.get("/categories/:id", (req, res) => {
             if (err) {
                 return res.status(500).json({ error: 'Error fetching section categories' });
             }
-            res.json(categories);
+            res.json(categories); // categories is already in array form
         });
     });
 });
@@ -41,7 +41,7 @@ router.get("/category/:id", (req, res) => {
         if (!category) {
             return res.status(404).json({ message: 'Section category not found' });
         }
-        res.json(category);
+        res.json(category); // Returning a single object
     });
 });
 

@@ -16,7 +16,8 @@ const getSectionCategoriesByCycleId = (cycleId, callback) => {
         if (err) {
             return callback(err);
         }
-        callback(null, results);
+        const categoriesArray = results; // Store results in an array form
+        callback(null, categoriesArray);
     });
 };
 
@@ -30,10 +31,10 @@ const getSectionCategoryById = (id, callback) => {
         if (results.length === 0) {
             console.log(`No section category found with ID: ${id}`); // Log if no results
         }
-        callback(null, results[0]); // Return the first result or null if not found
+        const category = results.length > 0 ? results[0] : null; // Return the first result or null if not found
+        callback(null, category); // Still returning an object for a single category
     });
 };
-
 
 // Export the functions
 module.exports = {
