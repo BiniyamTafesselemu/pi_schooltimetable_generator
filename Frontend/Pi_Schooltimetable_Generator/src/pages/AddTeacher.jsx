@@ -4,7 +4,6 @@ import HeadBan from "../components/HeadBan";
 
 // Subjects array
 const subjects = [
-<<<<<<< HEAD
     {
         section_category: "1",
         subjects: ["English", "Mathematics", "Biology"]
@@ -25,26 +24,6 @@ const subjects = [
         section_category: "5",
         subjects: ["Computer Science", "Economics", "Psychology"]
     }
-=======
-    "Mathematics "+ "Catregory1",
-    "Mathematics "+ "Catregory3",
-    "Mathematics "+ "Catregory4",
-    "Mathematics "+ "Catregory5",
-    "English",
-    "Science",
-    "History",
-    "Geography",
-    "Physics",
-    "Chemistry",
-    "Biology",
-    "Computer Science",
-    "Art",
-    "Music",
-    "Physical Education",
-    "Economics",
-    "Psychology",
-    "Sociology"
->>>>>>> a847066dd921a2ecef0958767c057dc44cbebfb2
 ];
 
 function AddTeacher() {
