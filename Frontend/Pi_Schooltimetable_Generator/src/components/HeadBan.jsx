@@ -35,7 +35,7 @@ export default function HeadBan({title}) {
                 <SideBarPopUP open={isOpen} onClose={()=> setIsOpen(false)}/>
             </div>
         )}
-        <h1 className="text-5xl font-bold text-[#5E469C] flex-1 justify-center items-center">{title}</h1>
+        <h1 className="text-3xl font-semibold text-[#5E469C] flex-1 justify-center items-center">{title}</h1>
     </header>
   )
 }
