@@ -19,7 +19,7 @@ export default function SubjectsWidget({Subjects, Label}) {
                 <Carousel slide={false} >
                     {
                         Subjects.map((Subject, index) => (
-                            <div className="flex h-full items-center justify-center">
+                            <div key={index} className="flex h-full items-center justify-center">
                                 <SubjectCard Subject={Subject} id = {`Subject-${index}`} Label={Label}/>
                             </div>        
                         ))
