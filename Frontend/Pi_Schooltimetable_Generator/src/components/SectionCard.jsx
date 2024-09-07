@@ -18,7 +18,7 @@ export default function SectionCard({Sec, index}) {
         </div>
         <div className="flex justify-between items-center p-[0rem_0.5rem]">
             <h2 className='text-4xl p-3'>{Sec.SectionCategory}</h2>
-            <button className="bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.3rem_0.5rem] rounded-md">Generate</button>
+            <a className="bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.3rem_0.5rem] rounded-md" href='/GenerateSchedule'>Generate</a>
         </div>
         <div>
         <Tabs aria-label="Tabs with icons" variant="underline" >

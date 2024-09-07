@@ -37,10 +37,8 @@ export default function Subjects(){
               </>
             )
           }
-            <button style={ADD_STYLES} className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md' onClick={()=> setIsOpen(true)}>ADD</button>
-            <AddSubject open={isOpen} onClose={()=> setIsOpen(false)}/>
-          <div>
-          </div>
+          <button style={ADD_STYLES} className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md' onClick={()=> setIsOpen(true)}>ADD</button>
+          <AddSubject open={isOpen} onClose={()=> setIsOpen(false)}/>
         </div>
       </div>
     )

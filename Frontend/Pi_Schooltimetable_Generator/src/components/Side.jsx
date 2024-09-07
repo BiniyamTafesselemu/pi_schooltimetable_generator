@@ -39,7 +39,7 @@ export default function Side(){
                     </a>
                 </li>
                 <li>
-                    <a href="#" className="hover:text-[#5E469C] block py-2 px-4 border-l-[0.2rem] border-transparent hover:border-[#A773DE] font-medium rounded-md transition-all duration-150 ease-in-out">
+                    <a href="/GenerateSchedule" className="hover:text-[#5E469C] block py-2 px-4 border-l-[0.2rem] border-transparent hover:border-[#A773DE] font-medium rounded-md transition-all duration-150 ease-in-out">
                     Generate
                     </a>
                 </li>

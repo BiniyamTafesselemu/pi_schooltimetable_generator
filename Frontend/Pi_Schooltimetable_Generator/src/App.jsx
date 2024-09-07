@@ -11,6 +11,7 @@ import Teachers from './pages/Teachers.jsx';
 import TeacherProfile from './pages/TeacherProfile.jsx';
 import TeacherEdit from './components/TeacherEdit.jsx';
 import AddTeacher from './pages/AddTeacher.jsx';
+import Generate from './pages/Generate.jsx';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
             <Route path="/AddTeachers" element={<AddTeacher/>} />
             <Route path="/TeacherProfile/:teacherID" element={<TeacherProfile/>}/>
             <Route path="TeacherEdit" element={<TeacherEdit/>}/>
-
+            <Route path= "/GenerateSchedule" element={<Generate/>}/>
           </Routes>
         </div>
       </div>
