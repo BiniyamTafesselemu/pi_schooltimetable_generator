@@ -7,6 +7,8 @@ import image1 from './assets/User flow-pana.png'
 import image2 from './assets/Background1.png'
 import image3 from './assets/Background2.png'
 import image4 from './assets/Online article-cuate.svg'
+import ClientStats from "./components/ClientStats";
+import { FooterComponent } from "./components/FooterComponent";
 
 const Home = () => {
   //<a href="https://storyset.com/education">Education illustrations by Storyset</a>
@@ -49,7 +51,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center  z-10">
+      <div className="flex flex-col justify-center items-center  z-10 mb-5">
         <div id="features" className="bg-[#E9F0CD] md:w-[73%] mx-2 my-4 md:m-0 p-6 flex flex-row z-10 items-top justify-center relative shadow-md">
           <img
             src= {image2}
@@ -84,7 +86,9 @@ const Home = () => {
           </div>
           <img src={image4} alt="features illusteration" className="w-[40%] h-a z-10 scale-x-[-1]"/>
         </div>
+        <ClientStats/>
       </div>
+      <FooterComponent/>
     </div>
   );
 };
