@@ -20,7 +20,6 @@ export default function HeadBan({title}) {
         };
       }, []);
     
-
     return (
     <header className="bg-[#f1f1f1] border-b-[0.1rem] border-solid border-[rgb(167,115,222)] p-4 flex flex-row items-center justify-center">
         {screenSize <= 768    && (
