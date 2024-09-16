@@ -37,9 +37,9 @@ const Home = () => {
           {/* Content */}
           <div className="relative z-10 flex  flex-col-reverse md:flex-row justify-between items-center rounded-lg gap-10 p-2">
             <div id="hero-text" className="">
-              <div class="text-[#5e469c] text-[27px] md:text-[40px] font-bold font-['Inter']">
+              <p class="text-[#5e469c] text-[27px] md:text-[40px] font-bold font-['Inter']">
                 Revolutionize Your School's Scheduling
-              </div>
+              </p>
               <p id="hero-explanation" className="text-black text-[20px] md:text-3xl font-normal font-['Inter']">
                 Effortlessly create and manage class schedules for multiple schools.
               </p>

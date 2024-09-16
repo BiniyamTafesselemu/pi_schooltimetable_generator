@@ -12,6 +12,7 @@ import TeacherProfile from './pages/TeacherProfile.jsx';
 import TeacherEdit from './components/TeacherEdit.jsx';
 import AddTeacher from './pages/AddTeacher.jsx';
 import Generate from './pages/Generate.jsx';
+import Schedules from './pages/Schedules.jsx';
 
 function App() {
   const location = useLocation();
@@ -33,6 +34,7 @@ function App() {
             <Route path="/TeacherProfile/:teacherID" element={<TeacherProfile/>}/>
             <Route path="TeacherEdit" element={<TeacherEdit/>}/>
             <Route path= "/GenerateSchedule" element={<Generate/>}/>
+            <Route path= "/Schedules" element={<Schedules/>}/>
           </Routes>
         </div>
       </div>

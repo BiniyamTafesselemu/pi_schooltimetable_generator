@@ -9,7 +9,7 @@ function ClientStats() {
     {
         quote:"Your team was incredibly helpful and efficient.",
         user: {
-            Name:"Anya Petrova",
+            Name:"Josh Petrova",
             ProPic:"https://flowbite.com/docs/images/people/profile-picture-1.jpg",
             School:"Oakwood Academy"
         }
@@ -56,7 +56,6 @@ function ClientStats() {
     </div>
   </div>
   <div className="text-center mt-8 md:mt-0">
-    <h3 className="text-2xl font-semibold">What Our Clients Say</h3>
     <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 mx-auto w-[28rem]">
       <Carousel leftControl=" " rightControl=" ">
         {Quotes.map((quote, index) => (
