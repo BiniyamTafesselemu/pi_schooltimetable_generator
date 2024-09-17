@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import ReactDom from 'react-dom'
-import Button from './Button'
 
 const MODAL_STYLES = {
     position: 'fixed',
@@ -75,8 +74,8 @@ export default function AddSubject({open, onClose}) {
             <div style={OVERLAY_STYLES}></div>
             <div style={MODAL_STYLES}>
                 <button onClick={close}> 
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                    <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18 17.94 6M18 18 6.06 6"/>
                     </svg>
                 </button>
                 <form action='' onSubmit={handleSubmit}>
@@ -128,7 +127,7 @@ export default function AddSubject({open, onClose}) {
                     </Select>)
                     }
                     <div className='flex flex-row gap-1 m-1 items-center justify-end'>
-                    <button type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
+                        <button type='submit' className='bg-[#5E469C] hover:bg-[rgb(0,0,0)] border-[#8C5FFF] text-white p-[0.2rem_1rem] rounded-md'>Save</button>
                     </div>
                 </form>
             </div>
