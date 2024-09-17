@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route, useLocation } from 'react-router-dom';
+
+import Home from './Home.jsx';
+import Test from './Test.jsx';
+
+import Side from './components/Side.jsx';
+import Class from './pages/Class.jsx';
+import Subjects from './pages/Subjects.jsx';
+import Teachers from './pages/Teachers.jsx';
+import TeacherProfile from './pages/TeacherProfile.jsx';
+import TeacherEdit from './components/TeacherEdit.jsx';
+import AddTeacher from './pages/AddTeacher.jsx';
+import Generate from './pages/Generate.jsx';
+import Schedules from './pages/Schedules.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const location = useLocation();
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div className='flex md:flex-row flex-col h-screen bg-[#DCD4F1]'>
+      {location.pathname !== '/' &&
+        (<div className='m-0 px-0 py-0 md:h-full h-[0rem] w-[0rem] overflow-x-hidden md:w-fit'>
+          <Side/>
+        </div>)
+      }
+        <div className='md:flex-1 overflow-y-auto overflow-x-hidden'>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Sections" element={<Class />} />
+            <Route path="/Subjects" element={<Subjects />} />
+            <Route path="/Teachers" element={<Teachers />} />
+            <Route path="/AddTeachers" element={<AddTeacher/>} />
+            <Route path="/TeacherProfile/:teacherID" element={<TeacherProfile/>}/>
+            <Route path="TeacherEdit" element={<TeacherEdit/>}/>
+            <Route path= "/GenerateSchedule" element={<Generate/>}/>
+            <Route path= "/Schedules" element={<Schedules/>}/>
+          </Routes>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
-export default App
+export default App;
