@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Checkbox, TextInput } from 'flowbite-react'
 
-export default function ClassDayPlan() {
+export default function ClassDayPlan({setValues}) {
     const [selectDate, setSelectDate] = useState(
         {
             mon: true,
@@ -39,6 +39,13 @@ export default function ClassDayPlan() {
             ...selectDate,
             [name]: checked,
         });
+        setValues(prev=>({
+            ...prev,
+            classDay:{
+                Dates:selectDate,
+                classeNums: classesNum
+            }
+        }))
     }
 
     const handleDateNum = (event) =>{
@@ -47,6 +54,13 @@ export default function ClassDayPlan() {
             ...classesNum,
             [name]: value,
         });
+        setValues(prev=>({
+            ...prev,
+            classDay:{
+                Dates:selectDate,
+                classeNums: classesNum
+            }
+        }))
     }
 
     const handleComNum = (event) =>{
@@ -56,6 +70,15 @@ export default function ClassDayPlan() {
                 ...prev,
                 commonNum: value,
             }));
+            setClassNum({
+                mon: value,
+                tus: value,
+                wed: value,
+                thr: value,
+                fri: value,
+                sat: value,
+                sun: value,
+            })
         }
         else if(name === 'checkCommon'){
             setCommonClass(prev =>({
@@ -63,8 +86,14 @@ export default function ClassDayPlan() {
                 isCommon: checked,
             }));
         }
+        setValues(prev=>({
+            ...prev,
+            classDay:{
+                Dates:selectDate,
+                classeNums: classesNum
+            }
+        }))
     }
-
     return (
     <div className='m-5'>
         <h2 className='text-left'>Class day plan</h2>
