@@ -25,7 +25,45 @@ router.get("/categories/:id", (req, res) => {
             if (err) {
                 return res.status(500).json({ error: 'Error fetching section categories' });
             }
-            res.json(categories); // categories is already in array form
+
+            // Process categories to build the hierarchical structure
+            const sectionCategories = {};
+
+            categories.forEach(row => {
+                // Initialize section category if not already present
+                if (!sectionCategories[row.SectionCategory]) {
+                    sectionCategories[row.SectionCategory] = {
+                        SectionCategory: row.SectionCategory,
+                        Sections: []
+                    };
+                }
+
+                const category = sectionCategories[row.SectionCategory];
+
+                // Find or create the section
+                let section = category.Sections.find(s => s.SectionName === row.SectionName);
+                if (!section) {
+                    section = {
+                        SectionName: row.SectionName,
+                        Subjects: []
+                    };
+                    category.Sections.push(section);
+                }
+
+                // Add the subject with teacher details
+                section.Subjects.push({
+                    Subject: row.Subject,
+                    Teacher: {
+                        name: row.TeacherName,
+                        ID: row.TeacherID
+                    }
+                });
+            });
+
+            // Convert object to array
+            const result = Object.values(sectionCategories);
+
+            res.json(result);
         });
     });
 });
@@ -41,7 +79,42 @@ router.get("/category/:id", (req, res) => {
         if (!category) {
             return res.status(404).json({ message: 'Section category not found' });
         }
-        res.json(category); // Returning a single object
+
+        // Process the category to build the hierarchical structure
+        const sectionCategories = {
+            SectionCategory: category.SectionCategory,
+            Sections: []
+        };
+
+        // Assume we have a function to fetch sections and subjects for this category
+        getSectionsAndSubjectsByCategoryId(id, (err, sections) => {
+            if (err) {
+                return res.status(500).json({ error: 'Error fetching sections and subjects' });
+            }
+
+            sections.forEach(row => {
+                // Find or create the section
+                let section = sectionCategories.Sections.find(s => s.SectionName === row.SectionName);
+                if (!section) {
+                    section = {
+                        SectionName: row.SectionName,
+                        Subjects: []
+                    };
+                    sectionCategories.Sections.push(section);
+                }
+
+                // Add the subject with teacher details
+                section.Subjects.push({
+                    Subject: row.Subject,
+                    Teacher: {
+                        name: row.TeacherName,
+                        ID: row.TeacherID
+                    }
+                });
+            });
+
+            res.json(sectionCategories);
+        });
     });
 });
 
