@@ -2,7 +2,7 @@ const db = require("../db");
 
 // FUNCTION TO CREATE teacher  
 const createTeacher = (teacherData, callback) => {  
-    const query = "INSERT INTO teacher (email, Full_Name, Date_of_birth, subject_id, availability_id) VALUES (?, ?, ?, ?, ?)";  
+    const query = "INSERT INTO teacher (email, Full_Name, Date_of_birth, subject_id, availability_id,teacher_image) VALUES (?, ?, ?, ?, ?,?)";  
     db.query(query, [teacherData.email, teacherData.Full_Name, teacherData.Date_of_birth, teacherData.subject_id, teacherData.availability_id], (err, results) => {  
         if (err) {  
             return callback(err);  
@@ -72,8 +72,8 @@ const updateTeacher = (id, teacherData, callback) => {
             return callback(new Error(`Teacher with ID ${id} does not exist.`));
         }
 
-        const query = "UPDATE teacher SET email = ?, Full_Name = ?, Date_of_birth = ?, subject_id = ?, availability_id = ? WHERE teacher_id = ?";  
-        db.query(query, [teacherData.email, teacherData.Full_Name, teacherData.Date_of_birth, teacherData.subject_id, teacherData.availability_id, id], (err, results) => {  
+        const query = "UPDATE teacher SET email = ?, Full_Name = ?, Date_of_birth = ?,teacher_image = ?, subject_id = ?, availability_id = ? WHERE teacher_id = ?";  
+        db.query(query, [teacherData.email, teacherData.Full_Name, teacherData.Date_of_birth, teacherData.teacher_image,teacherData.subject_id, teacherData.availability_id, id], (err, results) => {  
             if (err) {  
                 return callback(err);  
             }  
