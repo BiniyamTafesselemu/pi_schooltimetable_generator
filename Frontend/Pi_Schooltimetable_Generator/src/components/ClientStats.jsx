@@ -33,7 +33,7 @@ function ClientStats() {
   ];
 
   return (
-    <section className="bg-[#E9F0CD] shadow-md md:w-[73%] mx-2 my-4 md:my-5 p-6 flex md:flex-row flex-col justify-between items-center">
+    <section className="bg-[#E9F0CD] shadow-md md:w-[73%] mx-2 my-4 md:my-5 p-6 flex xl:flex-row flex-col justify-between items-center">
   <div>
     <h2 className="text-3xl font-bold text-center mb-8">Our Impact</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

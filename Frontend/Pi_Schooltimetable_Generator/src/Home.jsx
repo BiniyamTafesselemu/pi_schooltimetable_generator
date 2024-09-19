@@ -18,7 +18,7 @@ const Home = () => {
       <header class="relative z-10 flex flex-row items-center justify-between px-5 m-0">
         <div className="flex flex-row items-center justify-center gap-1">
           <img class="md:w-[60px] w-[50px] h-auto" src={logo} />
-          <h1 class="text-[#5e469c] text-[20px] md:text-[45px] font-bold font-['Inter']">
+          <h1 class="text-[#5e469c] text-[20px] md:text-[30px] xl:text-[45px] font-bold font-['Inter']">
             Pi Timetable Generation System
           </h1>
         </div>
@@ -35,19 +35,19 @@ const Home = () => {
           />
           
           {/* Content */}
-          <div className="relative z-10 flex  flex-col-reverse md:flex-row justify-between items-center rounded-lg gap-10 p-2">
+          <div className="relative z-10 flex  flex-col-reverse xl:flex-row justify-between items-center rounded-lg gap-10 p-2">
             <div id="hero-text" className="">
-              <p class="text-[#5e469c] text-[27px] md:text-[40px] font-bold font-['Inter']">
+              <p class="text-[#5e469c] text-[27px] md:text-[35px] xl:text-[40px] font-bold font-['Inter']">
                 Revolutionize Your School's Scheduling
               </p>
-              <p id="hero-explanation" className="text-black text-[20px] md:text-3xl font-normal font-['Inter']">
+              <p id="hero-explanation" className="text-black text-[20px] md:text-2xl xl:text-3xl font-normal font-['Inter']">
                 Effortlessly create and manage class schedules for multiple schools.
               </p>
               <button className="px-4 bg-[#5e469c] hover:bg-black rounded-lg border border-[#8b5eff] text-neutral-100 my-3 text-[25px] md:text-[32px] font-normal font-['Inter']">
                 Start Now!
               </button>
             </div>
-            <img src={illustration} alt="illustration" className="md:w-[50%] h-auto" />
+            <img src={illustration} alt="illustration" className=" md:w-[70%] xl:w-[50%] h-auto" />
           </div>
         </div>
       </div>
@@ -60,8 +60,8 @@ const Home = () => {
           />
           <img src={image1} alt="features illusteration" className="w-[30%] h-a z-10"/>
           <div className="p-5 z-10">
-            <h2 className="text-2xl md:text-5xl font-semibold mb-4 text-[#5e469c]">Key Features</h2>
-            <ol className="list-disc pl-5 md:ml-32 md:text-3xl">
+            <h2 className="text-2xl md:text-4xl xl:text-5xl font-semibold mb-4 text-[#5e469c]">Key Features</h2>
+            <ol className="list-disc pl-5 xl:ml-32 md:text-2xl xl:text-3xl">
               <li className="my-4">On-demand conflict resolution</li>
               <li className="my-4">Easy-to-use interface</li>
               <li className="my-4">Integration</li>
@@ -76,8 +76,8 @@ const Home = () => {
             className="absolute top-[-5%] right-[-5%] w-[42%] object-contain z-0"
           />
           <div className="p-5 z-10">
-            <h2 className="text-2xl md:text-5xl font-semibold mb-4 text-[#5e469c]">Benefits</h2>
-            <ol className="list-disc pl-5 md:ml-32 md:text-3xl">
+            <h2 className="text-2xl md:text-4xl xl:text-5xl font-semibold mb-4 text-[#5e469c]">Benefits</h2>
+            <ol className="list-disc pl-5 xl:ml-32 md:text-2xl xl:text-3xl">
               <li className="my-4">Save time and resources</li>
               <li className="my-4">Improve class distribution</li>
               <li className="my-4">Enhance teacher satisfaction</li>

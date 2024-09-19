@@ -25,7 +25,7 @@ const OVERLAY_STYLES = {
     zIndex: 1000
 }
 
-export default function ({isOpen, onClose}) {
+export default function InviteCard({isOpen, onClose}) {
     const [value, setValue] = useState(
         {
             email:'',
@@ -72,7 +72,7 @@ export default function ({isOpen, onClose}) {
     }
     const roles = [{id:"1", name:"user"}, {id:"2", name:"admin"},]
     if (!isOpen) return null;
-    return(
+    return ReactDom.createPortal(
         <>
             <div style={OVERLAY_STYLES}></div>
             <div style={MODAL_STYLES}>
@@ -85,7 +85,7 @@ export default function ({isOpen, onClose}) {
                     </button>
                 </div>
                 <form action='' onSubmit={handleSubmit}>
-                    <div className='flex flex-row gap-2'>
+                    <div className='flex flex-col md:flex-row gap-2 items-start md:items-center'>
                         {
                             (error.email === "")?
                             (<TextInput id="email" type="email" icon={HiMail} placeholder="name@flowbite.com" className='focus:border-[#5E469C]' name='email' onChange={handleInput}/>):
@@ -126,7 +126,8 @@ export default function ({isOpen, onClose}) {
                     </div>
                 </form>
             </div>
-        </>
+        </>,
+        document.getElementById('portal')
     )
 }
 

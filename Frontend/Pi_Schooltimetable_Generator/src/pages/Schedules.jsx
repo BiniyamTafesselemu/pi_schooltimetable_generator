@@ -48,11 +48,13 @@ export default function Schedules() {
           <div key={`${section.Name}-${index}`} className='w-fit'>
             <div className='flex flex-row justify-between items-center px-4'>
               <h2 className='text-2xl font-bold'>Sec {section.Name}</h2>
+              <div>
               <button className="bg-[#5E469C] text-white hover:bg-black block p-1 text-center border-transparent font-medium rounded-[0.5rem_0.5rem_0rem_0rem] transition-all duration-150 ease-in-out">
                 <svg className="w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                   <path stroke="currentColor" strokeLinejoin="round" strokeWidth="2" d="M16.444 18H19a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h2.556M17 11V5a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v6h10ZM7 15h10v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1v-4Z"/>
                 </svg>
               </button>
+              </div>
             </div>
             <div className='p-[0.1rem] xl:p-5 bg-[#F1F1F1] border-[0.1rem] border-[#8973C1] items-start justify-start h-fit'>
               <Timetable timetable={section.timetable}/>
@@ -62,6 +64,7 @@ export default function Schedules() {
         )
       }
       </Carousel>
+      
       </div>
     </div>
     </div>
