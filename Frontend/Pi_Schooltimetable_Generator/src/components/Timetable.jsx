@@ -73,7 +73,7 @@ function Timetable({timetable}){
                     <Box subject={timetable[day][rowIndex].subject}/>
                   </div>
                 ) : (
-                  <div className="bg-[#d8c5e8] p-5 rounded-md border-[#C1B2E9] border-[0.1rem] m-1"></div> // If no class is available, display empty
+                  <div></div> // If no class is available, display empty
                 )}
               </td>
             ))}

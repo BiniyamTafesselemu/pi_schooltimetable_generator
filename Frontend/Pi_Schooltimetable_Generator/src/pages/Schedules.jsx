@@ -46,7 +46,7 @@ export default function Schedules() {
       {
         timetables[SectionCategory].Sections.map((section, index) => (
           <div key={`${section.Name}-${index}`} className='w-fit'>
-            <div className='flex flex-row justify-between items-center'>
+            <div className='flex flex-row justify-between items-center px-4'>
               <h2 className='text-2xl font-bold'>Sec {section.Name}</h2>
               <button className="bg-[#5E469C] text-white hover:bg-black block p-1 text-center border-transparent font-medium rounded-[0.5rem_0.5rem_0rem_0rem] transition-all duration-150 ease-in-out">
                 <svg className="w-7 h-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -54,7 +54,7 @@ export default function Schedules() {
                 </svg>
               </button>
             </div>
-            <div className='p-5 bg-[#F1F1F1] border-[0.1rem] border-[#8973C1] items-start justify-start h-fit'>
+            <div className='p-[0.1rem] xl:p-5 bg-[#F1F1F1] border-[0.1rem] border-[#8973C1] items-start justify-start h-fit'>
               <Timetable timetable={section.timetable}/>
             </div>
           </div>
